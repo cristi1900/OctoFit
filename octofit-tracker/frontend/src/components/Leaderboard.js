@@ -18,6 +18,21 @@ function Leaderboard() {
       });
   }, []);
 
+    const apiUrl = process.env.REACT_APP_CODESPACE_NAME
+      ? `https://${process.env.REACT_APP_CODESPACE_NAME}-8000.app.github.dev/api/leaderboard/`
+      : 'http://localhost:8000/api/leaderboard/';
+
+    useEffect(() => {
+      fetch(apiUrl)
+        .then(res => res.json())
+        .then(data => {
+          const results = data.results || data;
+          setEntries(results);
+          console.log('Fetched leaderboard:', results);
+          console.log('API endpoint:', apiUrl);
+        });
+    }, []);
+
   return (
     <div>
       <h2>Leaderboard</h2>

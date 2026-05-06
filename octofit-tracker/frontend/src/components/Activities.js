@@ -1,9 +1,5 @@
 import React, { useEffect, useState } from 'react';
 
-const apiUrl = process.env.REACT_APP_CODESPACE_NAME
-  ? `https://${process.env.REACT_APP_CODESPACE_NAME}-8000.app.github.dev/api/activities/`
-  : 'http://localhost:8000/api/activities/';
-
 function Activities() {
   const [activities, setActivities] = useState([]);
 
@@ -29,5 +25,9 @@ function Activities() {
     </div>
   );
 }
+
+const apiUrl = process.env.REACT_APP_CODESPACE_NAME
+  ? `https://${process.env.REACT_APP_CODESPACE_NAME}-8000.app.github.dev/api/activities/`
+  : 'http://localhost:8000/api/activities/';
 
 export default Activities;
